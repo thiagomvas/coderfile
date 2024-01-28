@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <InvariantGlobalization>true</InvariantGlobalization>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>coderfile</ToolCommandName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +17,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\coderfile.Core\coderfile.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Templates\**\*.*" Pack="true" PackagePath="contentFiles/any/any/Templates/" />
   </ItemGroup>
 
 </Project>
