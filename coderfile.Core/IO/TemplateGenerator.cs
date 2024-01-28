@@ -18,10 +18,7 @@ namespace coderfile.Core.IO
 
 			if (path == null)
 			{
-				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.Write("❗ ");
-				Console.ResetColor();
-				Console.WriteLine($"{filename}: Failed to find template file for {template}");
+				CLILogger.LogError($"Could not find template file {template} in {folderPath}");
 			}
 			else
 				CloneTemplateFile(filename, path);
@@ -37,6 +34,11 @@ namespace coderfile.Core.IO
 				Path.GetFileNameWithoutExtension(file)
 				.StartsWith(partialFileName, StringComparison.OrdinalIgnoreCase));
 
+			if(matchingFile is null)
+			{
+				CLILogger.LogError($"Could not find template file {partialFileName} in {folderPath}");
+			}
+
 			return matchingFile;
 		}
 
@@ -47,17 +49,11 @@ namespace coderfile.Core.IO
 
 			if (FileManager.CreateFile(path, content))
 			{
-				Console.ForegroundColor = ConsoleColor.Green;
-				Console.Write("✓ ");
-				Console.ResetColor();
-				Console.WriteLine($"{name}: Created file at {path}");
+				CLILogger.LogSuccess($"Created {name} file at {path}");
 			}
 			else
 			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.Write("X ");
-				Console.ResetColor();
-				Console.WriteLine($"{name}: Failed to create file at {path}");
+				CLILogger.LogError($"Failed to create {name} file at {path}");
 			}
 		}
 
@@ -67,17 +63,11 @@ namespace coderfile.Core.IO
 
 			if (FileManager.CreateFile(path, content))
 			{
-				Console.ForegroundColor = ConsoleColor.Green;
-				Console.Write("✓ ");
-				Console.ResetColor();
-				Console.WriteLine($"{name}: Created file at {path}");
+				CLILogger.LogSuccess($"Created {name} file at {path}");
 			}
 			else
 			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.Write("X ");
-				Console.ResetColor();
-				Console.WriteLine($"{name}: Failed to create file at {path}");
+				CLILogger.LogError($"Failed to create {name} file at {path}");
 			}
 		}
 	}
