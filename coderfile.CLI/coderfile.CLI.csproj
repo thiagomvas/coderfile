@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Templates\Contributing\" />
   </ItemGroup>
 
   <ItemGroup>

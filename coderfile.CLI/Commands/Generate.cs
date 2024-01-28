@@ -24,11 +24,24 @@ namespace coderfile.CLI.Commands
 			}
 		}
 
-		[Command("gitkeep", Description = "Generate a .gitkeep file.")]
-		public void Gitkeep([Option('o', Description = "Generate an empty .gitkeep file to track an empty directory")] string? output)
+		[Command("codeofconduct", Aliases = ["conduct"], Description = "Generate a Code Of Conduct file.")]
+		public void CodeOfConduct(TemplateParams templateParams, string contact)
+		{
+			string? path = TemplateGenerator.FindTemplateFile("CodeOfConduct", templateParams.Template ?? "contributor-covenant");
+			if(path is not null)
+			{
+				string content = File.ReadAllText(path);
+				content = content.Replace("{{contact}}", contact);
+				TemplateGenerator.GenerateFile("CODE_OF_CONDUCT.md", content);
+			}
+		}
+
+		[Command("gitkeep", Description = "Generate an empty .gitkeep file to track an empty directory")]
+		public void Gitkeep([Option('o', Description = "The relative path to the target folder to add the gitkeep")] string? output)
 		{
 			TemplateGenerator.GenerateFile(output is not null ? Path.Combine(output, ".gitkeep") : ".gitkeep", "");
 		}
+
 	}
 
 	public class TemplateParams : ICommandParameterSet
