@@ -60,5 +60,25 @@ namespace coderfile.Core.IO
 				Console.WriteLine($"{name}: Failed to create file at {path}");
 			}
 		}
+
+		public static void GenerateFile(string name, string content)
+		{
+			string path = Path.Combine(Directory.GetCurrentDirectory(), name);
+
+			if (FileManager.CreateFile(path, content))
+			{
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.Write("✓ ");
+				Console.ResetColor();
+				Console.WriteLine($"{name}: Created file at {path}");
+			}
+			else
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write("X ");
+				Console.ResetColor();
+				Console.WriteLine($"{name}: Failed to create file at {path}");
+			}
+		}
 	}
 }
