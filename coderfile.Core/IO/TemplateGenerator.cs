@@ -4,7 +4,7 @@ namespace coderfile.Core.IO
 {
 	public class TemplateGenerator
 	{
-		public const string rootFromDll = @"..\..\..\..\contentFiles\any\any\Templates";
+		public static string templateFolder => Path.Combine(Assembly.GetExecutingAssembly().Location,@"..\..\..\..\contentFiles\any\any\Templates");
 
 		/// <summary>
 		/// Shorthand for calling both <see cref="FindTemplateFile(string, string)"/> and <see cref="CloneTemplateFile(string, string)"/>
@@ -29,7 +29,7 @@ namespace coderfile.Core.IO
 
 		public static string? FindTemplateFile(string folderPath, string partialFileName)
 		{
-			string path = Path.Combine(Assembly.GetExecutingAssembly().Location, rootFromDll, folderPath);
+			string path = Path.Combine(templateFolder, folderPath);
 
 			string[] allFiles = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
 

@@ -1,7 +1,5 @@
 ﻿using Cocona;
-using coderfile.CLI.Templates;
 using coderfile.Core.IO;
-using System.Reflection;
 
 namespace coderfile.CLI.Commands
 {
