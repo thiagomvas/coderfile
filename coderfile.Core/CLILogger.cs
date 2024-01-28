@@ -5,7 +5,7 @@
 		public static void LogSuccess(string message)
 		{
 			Console.ForegroundColor = ConsoleColor.Green;
-			Console.Write("V");
+			Console.Write("✓ ");
 			Console.ResetColor();
 			Console.WriteLine(message);
 		}
