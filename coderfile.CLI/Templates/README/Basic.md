@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace coderfile.Core.Templates
-{
-    public static class Readme
-    {
-        public const string Basic = @"
 # Project Name
 
 Brief description of your project.
@@ -52,6 +42,4 @@ If you're open to contributions, explain how others can contribute to your proje
 
 ## License
 
-Specify the license under which your project is distributed.";
-    }
-}
+Specify the license under which your project is distributed.
