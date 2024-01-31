@@ -2,7 +2,7 @@
 
 namespace coderfile.Core.IO
 {
-	public class TemplateGenerator
+	public static class TemplateGenerator
 	{
 		public static string templateFolder => Path.Combine(Assembly.GetExecutingAssembly().Location,@"..\..\..\..\contentFiles\any\any\Templates");
 
@@ -40,6 +40,19 @@ namespace coderfile.Core.IO
 			}
 
 			return matchingFile;
+		}
+
+		public static string GetTemplateContent(string folderPath, string partialFileName)
+		{
+			string? path = FindTemplateFile(folderPath, partialFileName);
+			if(path is not null)
+			{
+				return File.ReadAllText(path);
+			}
+			else
+			{
+				return "";
+			}
 		}
 
 		public static void CloneTemplateFile(string name, string templatePath)
